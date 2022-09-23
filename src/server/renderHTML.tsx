@@ -17,7 +17,7 @@ const setInitialDataToStore = async (
     await Promise.allSettled(
       matchedRoutes.map((item) => {
         return Promise.resolve(
-          (item.route.element as any)?.type?.loadData?.({
+          (item.route.element as any)?.loadData?.({
             store,
             ctx,
             queryClient,

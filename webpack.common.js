@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const WebpackBar = require('webpackbar');
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin')
@@ -118,7 +119,7 @@ const webpackPlugins = () => {
         })
       )
   }
-
+  webpackpPlugins.push(new WebpackBar({}))
   return webpackpPlugins
 }
 
