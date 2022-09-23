@@ -1,0 +1,7 @@
+node_modules
+public
+public-client
+*.log
+dist
+compilation-stats.json
+.vscode
