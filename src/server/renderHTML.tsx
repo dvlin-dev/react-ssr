@@ -1,15 +1,21 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode } from 'react'
 
-import { Context } from "koa"
-import { matchRoutes, RouteMatch } from "react-router"
-import { dehydrate, QueryClient } from "react-query"
-import routes from "../routes"
-import getReduxStore from "../store"
-import App from "../App"
+import { Context } from 'koa'
+import { matchRoutes, RouteMatch } from 'react-router'
+import { dehydrate, QueryClient } from 'react-query'
+import routes from '../routes'
+import getReduxStore from '../store'
+import App from '../App'
 
+/**
+ * 处理异步数据的服务端渲染。
+ * @param matchedRoutes 服务端和 router 匹配到的路由
+ * @param ctx koa context
+ * @returns
+ */
 const setInitialDataToStore = async (
   matchedRoutes: RouteMatch[] | null,
-  ctx: Context,
+  ctx: Context
 ) => {
   const queryClient = new QueryClient()
   const store = getReduxStore({})
@@ -21,17 +27,23 @@ const setInitialDataToStore = async (
             store,
             ctx,
             queryClient,
-          }) ?? null,
+          }) ?? null
         )
-      }),
+      })
     )
 
   return { store, queryClient }
 }
 
+/**
+ * 将 redux、react-query 在服务端的数据注入到 APP 中,在客户端进行脱水
+ * @param ctx koa context
+ * @param staticContext 找不到路由时，做 NOT_FOUND 处理
+ * @returns
+ */
 const renderHTML = async (
   ctx: Context,
-  staticContext: { NOT_FOUND: boolean },
+  staticContext: { NOT_FOUND: boolean }
 ) => {
   let markup: null | ReactNode = null
 
@@ -54,7 +66,7 @@ const renderHTML = async (
       />
     )
   } catch (error) {
-    console.log("renderHTML 70,", error)
+    console.log('renderHTML 70,', error)
   }
 
   return {

@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import Home from '@/components/Home'
+import Home from '@/pages/Home'
+import Login from '@/pages/Login'
 
 import { RouteObject } from 'react-router'
 
@@ -21,6 +22,10 @@ const routes: IRoute[] = [
     path: '/',
     element: Home,
   },
+  {
+    path:'/login',
+    element:Login
+  }
 ]
 
 const mappedRoutes: RouteObject[] = routes.map((route) => {
