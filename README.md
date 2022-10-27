@@ -6,7 +6,7 @@
 
 在服务端将 HTML 整体分为三部分，分别为 Head、content、store,Head 部分为 css、js 和 seo 相关字段，content 为 react 代码，store 为注水部分。
 
-通过 renderToPipeableStream（18之前可以通过 renderToString或renderToNodeStream） 将 react 以 starm 的形式，放在 Head 和 store 中间传输。
+通过 renderToPipeableStream（18之前可以通过 renderToString或renderToNodeStream） 将 react 以 stream 的形式，放在 Head 和 store 中间传输。
 
 值得一提的是 React 18 为 SSR 提供了更高效的性能：
 
