@@ -50,6 +50,19 @@ const assetsCSS = isDEV
 const app = new Koa()
 
 app.use(async (ctx, next) => {
+  // mock 数据
+  if (ctx.path === '/api/userData') {
+    ctx.body = {
+      id: 1,
+      name: "dvlin",
+      email: "root@dvlin.com",
+    };
+  } else {
+    await next();
+  }
+});
+
+app.use(async (ctx, next) => {
   try {
     await next()
   } catch (err) {
@@ -140,7 +153,7 @@ app.on('error', (err) => {
   console.error('server error', err)
 })
 
-const port = 5000
+const port = 5001
 
 app.listen(port, () => {
   console.log(`ssr server is listening on ${port}`)

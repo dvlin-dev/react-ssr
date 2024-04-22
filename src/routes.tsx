@@ -7,7 +7,7 @@ import { RouteObject } from 'react-router'
 const ElementEnhance = (Comp: FC) => {
   const importable = (props: any) => <Comp {...props} />
 
-  importable.loadData = (Comp as any).loadData
+  importable.fetchServerSideProps = (Comp as any).fetchServerSideProps
   return importable
 }
 

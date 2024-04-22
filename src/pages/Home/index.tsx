@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import { fetchServerSideProps } from './fetchServerSideProps'
 
 const HomeLazy = lazy(() => import('./Home'))
 
@@ -9,5 +10,8 @@ const Home = (props: any) => {
     </Suspense>
   )
 }
+
+
+Home.fetchServerSideProps = fetchServerSideProps
 
 export default Home
